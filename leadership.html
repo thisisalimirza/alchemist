@@ -1,0 +1,1136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leadership - A Journey Through Doris Kearns Goodwin's Vision</title>
+    
+    <!-- Meta Tags -->
+    <meta name="description" content="An immersive journey through Doris Kearns Goodwin's Leadership. Explore the lessons from Lincoln, Theodore Roosevelt, FDR, and LBJ.">
+    <meta name="author" content="Ali Mirza">
+    
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Leadership - A Journey Through Presidential Greatness">
+    <meta property="og:description" content="Beautiful, immersive experience through Doris Kearns Goodwin's Leadership, crafted by Ali Mirza (@thisisalimirza).">
+    <meta property="og:url" content="https://thisisalimirza.com">
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@thisisalimirza">
+    <meta name="twitter:creator" content="@thisisalimirza">
+    <meta name="twitter:title" content="Leadership - A Journey">
+    <meta name="twitter:description" content="An immersive experience through Leadership.">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --presidential-navy: #0a1929;
+            --presidential-blue: #1e3a5f;
+            --presidential-gold: #d4af37;
+            --presidential-cream: #f5f3ed;
+            
+            --sand-50: #faf8f5;
+            --sand-100: #f5f1ea;
+            --sand-400: #c9b896;
+            --sand-600: #9d8760;
+            --sand-700: #7a6847;
+            --sand-900: #3d3426;
+            
+            --slate-700: #334155;
+            --slate-800: #1e293b;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Crimson Text', serif;
+            background: var(--sand-50);
+            color: var(--sand-900);
+            line-height: 1.7;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"><filter id="noise"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="4" /></filter><rect width="100" height="100" filter="url(%23noise)" opacity="0.03"/></svg>');
+            pointer-events: none;
+            z-index: 9999;
+            mix-blend-mode: overlay;
+        }
+
+        .font-display {
+            font-family: 'Cormorant Garamond', serif;
+        }
+
+        /* Progress Bar */
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--presidential-blue), var(--presidential-gold));
+            z-index: 1000;
+            transition: width 0.1s ease-out;
+        }
+
+        /* Navigation Dots */
+        .nav-dots {
+            position: fixed;
+            right: 2rem;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 100;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .nav-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: transparent;
+            border: 2px solid var(--sand-400);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-dot:hover {
+            background: var(--presidential-gold);
+            border-color: var(--presidential-gold);
+            transform: scale(1.3);
+        }
+
+        .nav-dot.active {
+            background: var(--presidential-gold);
+            border-color: var(--presidential-gold);
+        }
+
+        .nav-dot-label {
+            position: absolute;
+            right: 2rem;
+            top: 50%;
+            transform: translateY(-50%);
+            white-space: nowrap;
+            background: rgba(0, 0, 0, 0.85);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .nav-dot:hover .nav-dot-label {
+            opacity: 1;
+        }
+
+        @media (max-width: 1024px) {
+            .nav-dots {
+                display: none;
+            }
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            background: linear-gradient(135deg, var(--presidential-navy) 0%, var(--presidential-blue) 100%);
+            overflow: hidden;
+            color: white;
+        }
+
+        .hero::before {
+            content: '★';
+            position: absolute;
+            font-size: 600px;
+            color: rgba(212, 175, 55, 0.05);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .hero-content {
+            z-index: 10;
+            text-align: center;
+            padding: 2rem;
+            max-width: 1000px;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1.5s ease-out forwards;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-subtitle {
+            color: var(--presidential-gold);
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            font-size: 0.875rem;
+            margin-bottom: 2rem;
+            opacity: 0;
+            animation: fadeInUp 1.5s ease-out 0.5s forwards;
+        }
+
+        .hero-title {
+            font-size: clamp(4rem, 12vw, 8rem);
+            font-weight: 700;
+            margin-bottom: 2rem;
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+        }
+
+        .hero-author {
+            font-size: clamp(1.5rem, 3vw, 2.5rem);
+            font-style: italic;
+            color: var(--presidential-gold);
+            margin-bottom: 2rem;
+            opacity: 0;
+            animation: fadeInUp 1.5s ease-out 0.8s forwards;
+        }
+
+        .hero-divider {
+            width: 100px;
+            height: 2px;
+            background: var(--presidential-gold);
+            margin: 2rem auto;
+            opacity: 0;
+            animation: fadeInUp 1.5s ease-out 1s forwards;
+        }
+
+        .hero-quote {
+            font-size: clamp(1.125rem, 2vw, 1.5rem);
+            color: rgba(255, 255, 255, 0.9);
+            font-style: italic;
+            max-width: 800px;
+            margin: 0 auto;
+            opacity: 0;
+            animation: fadeInUp 1.5s ease-out 1.2s forwards;
+        }
+
+        .hero-credit {
+            margin-top: 3rem;
+            font-size: 0.875rem;
+            opacity: 0;
+            animation: fadeInUp 1.5s ease-out 2.5s forwards;
+        }
+
+        .hero-credit a {
+            color: var(--presidential-gold);
+            text-decoration: none;
+            border-bottom: 1px solid var(--presidential-gold);
+            transition: all 0.3s ease;
+        }
+
+        .hero-credit a:hover {
+            color: white;
+            border-bottom-color: white;
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            opacity: 0;
+            animation: fadeInUp 1.5s ease-out 2s forwards, bounce 2s ease-in-out 3s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(-10px); }
+        }
+
+        .scroll-arrow {
+            width: 24px;
+            height: 24px;
+            border-left: 2px solid var(--presidential-gold);
+            border-bottom: 2px solid var(--presidential-gold);
+            transform: rotate(-45deg);
+        }
+
+        /* Section Styles */
+        section {
+            min-height: 100vh;
+            position: relative;
+            padding: 8rem 2rem;
+            transition: background-color 0.8s ease;
+        }
+
+        .section-presidential {
+            background: linear-gradient(135deg, #0a1929 0%, #1e3a5f 100%);
+            color: white;
+        }
+
+        .section-presidential::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: 
+                repeating-linear-gradient(90deg, rgba(212, 175, 55, 0.03) 0px, transparent 2px, transparent 40px),
+                repeating-linear-gradient(0deg, rgba(212, 175, 55, 0.03) 0px, transparent 2px, transparent 40px);
+            opacity: 0.5;
+        }
+
+        .section-light {
+            background: linear-gradient(135deg, #faf8f5 0%, #f5f1ea 100%);
+            color: var(--sand-900);
+        }
+
+        .section-gold {
+            background: linear-gradient(135deg, #f5f3ed 0%, #ebe8dc 100%);
+            color: var(--sand-900);
+        }
+
+        .section-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 10;
+        }
+
+        .section-number {
+            position: absolute;
+            top: 2rem;
+            right: 2rem;
+            font-size: 6rem;
+            font-weight: 700;
+            opacity: 0.08;
+            line-height: 1;
+            pointer-events: none;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 8rem;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 1s ease-out;
+            position: relative;
+            padding: 3rem 2rem;
+        }
+
+        .section-header::before {
+            content: '★';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 1.5rem;
+            opacity: 0.2;
+        }
+
+        .section-header.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .section-part {
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+
+        .section-presidential .section-part {
+            color: var(--presidential-gold);
+        }
+
+        .section-light .section-part,
+        .section-gold .section-part {
+            color: var(--presidential-blue);
+        }
+
+        .ornament {
+            display: inline-block;
+            margin: 0 1rem;
+            opacity: 0.3;
+            font-size: 0.875rem;
+        }
+
+        .section-title {
+            font-size: clamp(2.75rem, 6vw, 5rem);
+            font-weight: 600;
+            margin-bottom: 2rem;
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+        }
+
+        .section-divider {
+            width: 80px;
+            height: 2px;
+            margin: 2.5rem auto 0;
+            position: relative;
+        }
+
+        .section-presidential .section-divider {
+            background: var(--presidential-gold);
+        }
+
+        .section-light .section-divider,
+        .section-gold .section-divider {
+            background: var(--presidential-blue);
+        }
+
+        /* Quote Block */
+        .quote-block {
+            max-width: 900px;
+            margin: 0 auto 8rem;
+            padding: 4rem 3rem;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 1s ease-out;
+            position: relative;
+            border-radius: 8px;
+        }
+
+        .section-presidential .quote-block {
+            background: rgba(212, 175, 55, 0.08);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .section-light .quote-block {
+            background: rgba(255, 255, 255, 0.6);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        .section-gold .quote-block {
+            background: rgba(255, 255, 255, 0.7);
+            box-shadow: 0 4px 20px rgba(30, 58, 95, 0.1);
+        }
+
+        .quote-block::before,
+        .quote-block::after {
+            content: '"';
+            position: absolute;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 8rem;
+            font-weight: 700;
+            opacity: 0.08;
+            line-height: 1;
+        }
+
+        .quote-block::before {
+            top: 1rem;
+            left: 1rem;
+        }
+
+        .quote-block::after {
+            content: '"';
+            bottom: 1rem;
+            right: 1rem;
+        }
+
+        .quote-block.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .quote-text {
+            font-size: clamp(1.5rem, 3vw, 2.25rem);
+            line-height: 1.5;
+            text-align: center;
+            margin-bottom: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .quote-highlight {
+            font-size: clamp(2rem, 4.5vw, 4rem);
+            font-weight: 600;
+            line-height: 1.2;
+            letter-spacing: -0.02em;
+        }
+
+        .section-presidential .quote-highlight {
+            color: var(--presidential-gold);
+        }
+
+        .section-light .quote-highlight,
+        .section-gold .quote-highlight {
+            color: var(--presidential-blue);
+        }
+
+        .quote-attribution {
+            text-align: center;
+            margin-top: 2rem;
+            font-size: 0.875rem;
+            opacity: 0.4;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            position: relative;
+            z-index: 1;
+        }
+
+        .quote-attribution::before {
+            content: '';
+            display: block;
+            width: 40px;
+            height: 1px;
+            background: currentColor;
+            margin: 0 auto 1rem;
+        }
+
+        /* Footer */
+        footer {
+            padding: 6rem 2rem;
+            text-align: center;
+            background: var(--presidential-navy);
+            color: white;
+        }
+
+        .footer-title {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--presidential-gold);
+        }
+
+        .footer-subtitle {
+            font-style: italic;
+            margin-bottom: 2rem;
+        }
+
+        .social-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: white;
+            text-decoration: none;
+            font-size: 0.875rem;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            transition: all 0.3s ease;
+            border: 1px solid transparent;
+        }
+
+        .social-link:hover {
+            color: var(--presidential-gold);
+            background: rgba(212, 175, 55, 0.1);
+            border-color: var(--presidential-gold);
+            transform: translateY(-2px);
+        }
+
+        .social-link svg {
+            transition: transform 0.3s ease;
+        }
+
+        .social-link:hover svg {
+            transform: scale(1.1);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            section {
+                padding: 4rem 1.5rem;
+            }
+
+            .quote-block {
+                padding: 3rem 2rem;
+                margin-bottom: 5rem;
+            }
+
+            .quote-block::before,
+            .quote-block::after {
+                font-size: 5rem;
+            }
+
+            .section-number {
+                font-size: 4rem;
+                top: 1rem;
+                right: 1rem;
+            }
+
+            .social-link span {
+                display: none;
+            }
+
+            .social-link {
+                padding: 0.75rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="progress-bar" id="progressBar"></div>
+
+    <nav class="nav-dots" id="navDots"></nav>
+
+    <!-- Hero -->
+    <section class="hero">
+        <!-- Back to Library Button -->
+        <a href="index.html" style="position: absolute; top: 2rem; left: 2rem; z-index: 100; display: inline-flex; align-items: center; gap: 0.5rem; color: var(--presidential-gold); text-decoration: none; font-size: 0.875rem; padding: 0.75rem 1.25rem; background: rgba(10, 25, 41, 0.8); border-radius: 50px; border: 1px solid var(--presidential-gold); transition: all 0.3s ease; backdrop-filter: blur(10px);" onmouseover="this.style.background='rgba(212, 175, 55, 0.2)'; this.style.transform='translateX(-5px)';" onmouseout="this.style.background='rgba(10, 25, 41, 0.8)'; this.style.transform='translateX(0)';">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M19 12H5M12 19l-7-7 7-7"/>
+            </svg>
+            <span>Library</span>
+        </a>
+        
+        <div class="hero-content">
+            <p class="hero-subtitle">Lessons from Lincoln, Roosevelt, FDR & LBJ</p>
+            <h1 class="hero-title font-display">Leadership</h1>
+            <p class="hero-author">Doris Kearns Goodwin</p>
+            <div class="hero-divider"></div>
+            <p class="hero-quote">"The fame they craved bears little resemblance to today's cult of celebrity. For these leaders, the final measure of their achievements would be realized by their admittance to an enduring place in communal memory."</p>
+            <p class="hero-credit">
+                Crafted by <a href="https://thisisalimirza.com" target="_blank" rel="noopener noreferrer">Ali Mirza</a>
+                <span style="margin: 0 0.5rem; opacity: 0.3;">·</span>
+                <a href="https://twitter.com/thisisalimirza" target="_blank" rel="noopener noreferrer" style="color: white; text-decoration: none; border-bottom: 1px solid transparent; transition: all 0.3s ease;">@thisisalimirza</a>
+            </p>
+        </div>
+        <div class="scroll-indicator">
+            <div class="scroll-arrow"></div>
+        </div>
+    </section>
+
+    <!-- Ambition for Others -->
+    <section id="ambition" class="section-presidential" data-theme="presidential">
+        <div class="section-number font-display">1</div>
+        <div class="section-container">
+            <div class="section-header">
+                <div class="section-part"><span class="ornament">★</span>Part 1<span class="ornament">★</span></div>
+                <h2 class="section-title font-display">Ambition for Others</h2>
+                <div class="section-divider"></div>
+            </div>
+
+            <div class="quote-block">
+                <div class="quote-text quote-highlight font-display">
+                    It was not simply for himself; it was for the people he hoped to lead. He wanted to distinguish himself in their eyes.
+                </div>
+            </div>
+
+            <div class="quote-block">
+                <div class="quote-text">
+                    The sense of community was central to the master dream of his life—the desire to accomplish deeds that would gain the lasting respect of his fellow men.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Humble Origins -->
+    <section id="humble" class="section-light" data-theme="light">
+        <div class="section-number font-display">2</div>
+        <div class="section-container">
+            <div class="section-header">
+                <div class="section-part"><span class="ornament">★</span>Part 2<span class="ornament">★</span></div>
+                <h2 class="section-title font-display">Humble Beginnings</h2>
+                <div class="section-divider"></div>
+            </div>
+
+            <div class="quote-block">
+                <div class="quote-text">
+                    "I was born and have ever remained in the most humble walks of life. I have no wealthy or popular relations to recommend me. If the good people in their wisdom shall see fit to keep me in the background, I have been too familiar with disappointments to be very much chagrined."
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Self-Confidence -->
+    <section id="confidence" class="section-gold" data-theme="gold">
+        <div class="section-number font-display">3</div>
+        <div class="section-container">
+            <div class="section-header">
+                <div class="section-part"><span class="ornament">★</span>Part 3<span class="ornament">★</span></div>
+                <h2 class="section-title font-display">The Self-Made Mind</h2>
+                <div class="section-divider"></div>
+            </div>
+
+            <div class="quote-block">
+                <div class="quote-text quote-highlight font-display">
+                    He carried away from his brief schooling the self-confidence of a man who has never met his intellectual equal.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Integrity -->
+    <section id="integrity" class="section-presidential" data-theme="presidential">
+        <div class="section-number font-display">4</div>
+        <div class="section-container">
+            <div class="section-header">
+                <div class="section-part"><span class="ornament">★</span>Part 4<span class="ornament">★</span></div>
+                <h2 class="section-title font-display">Integrity Over Advancement</h2>
+                <div class="section-divider"></div>
+            </div>
+
+            <div class="quote-block">
+                <div class="quote-text">
+                    "I desire to live, and I desire place and distinction; but I would rather die now than live to see the day I would change my politics for an office worth three thousand dollars a year, and then feel compelled to erect a lightning-rod to protect a guilty conscience from an offended God."
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Preserve Freedom -->
+    <section id="freedom" class="section-light" data-theme="light">
+        <div class="section-number font-display">5</div>
+        <div class="section-container">
+            <div class="section-header">
+                <div class="section-part"><span class="ornament">★</span>Part 5<span class="ornament">★</span></div>
+                <h2 class="section-title font-display">Preserve the Fabric</h2>
+                <div class="section-divider"></div>
+            </div>
+
+            <div class="quote-block">
+                <div class="quote-text">
+                    The founding fathers' noble experiment—their ambition to show the world that ordinary people could govern themselves—had succeeded, and now it was up to his generation to preserve this proud fabric of freedom.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Partnership -->
+    <section id="partnership" class="section-gold" data-theme="gold">
+        <div class="section-number font-display">6</div>
+        <div class="section-container">
+            <div class="section-header">
+                <div class="section-part"><span class="ornament">★</span>Part 6<span class="ornament">★</span></div>
+                <h2 class="section-title font-display">The Power of Partnership</h2>
+                <div class="section-divider"></div>
+            </div>
+
+            <div class="quote-block">
+                <div class="quote-text quote-highlight font-display">
+                    With Eleanor by his side, Franklin believed "he would amount to something someday."
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Ambition's Companion -->
+    <section id="uncomfortable" class="section-presidential" data-theme="presidential">
+        <div class="section-number font-display">7</div>
+        <div class="section-container">
+            <div class="section-header">
+                <div class="section-part"><span class="ornament">★</span>Part 7<span class="ornament">★</span></div>
+                <h2 class="section-title font-display">Uncomfortable Companion</h2>
+                <div class="section-divider"></div>
+            </div>
+
+            <div class="quote-block">
+                <div class="quote-text quote-highlight font-display">
+                    Ambition is an uncomfortable companion. He creates a discontent with present surroundings and achievements: he is never satisfied but always pressing forward.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Linking Your Name -->
+    <section id="legacy" class="section-light" data-theme="light">
+        <div class="section-number font-display">8</div>
+        <div class="section-container">
+            <div class="section-header">
+                <div class="section-part"><span class="ornament">★</span>Part 8<span class="ornament">★</span></div>
+                <h2 class="section-title font-display">Link Your Name</h2>
+                <div class="section-divider"></div>
+            </div>
+
+            <div class="quote-block">
+                <div class="quote-text">
+                    The greatest passion he harbored was to link his name with something that would redound to the interest of his fellow man.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Work Ethic -->
+    <section id="work" class="section-gold" data-theme="gold">
+        <div class="section-number font-display">9</div>
+        <div class="section-container">
+            <div class="section-header">
+                <div class="section-part"><span class="ornament">★</span>Part 9<span class="ornament">★</span></div>
+                <h2 class="section-title font-display">Work, Work, Work</h2>
+                <div class="section-divider"></div>
+            </div>
+
+            <div class="quote-block">
+                <div class="quote-text quote-highlight font-display">
+                    The leading rule for the lawyer, as for the man of every other calling, is diligence. Leave nothing for tomorrow that can be done today. The key to success is work, work, work.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cultivating Courage -->
+    <section id="courage" class="section-presidential" data-theme="presidential">
+        <div class="section-number font-display">10</div>
+        <div class="section-container">
+            <div class="section-header">
+                <div class="section-part"><span class="ornament">★</span>Part 10<span class="ornament">★</span></div>
+                <h2 class="section-title font-display">Courage as Habit</h2>
+                <div class="section-divider"></div>
+            </div>
+
+            <div class="quote-block">
+                <div class="quote-text">
+                    By acting as if I was not afraid I gradually ceased to be afraid. Constantly forcing himself to do the difficult or even dangerous thing, he gradually was able to cultivate courage as a matter of habit, in the sense of repeated effort and repeated exercise of will-power.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Leadership Principles -->
+    <section id="principles" class="section-light" data-theme="light">
+        <div class="section-number font-display">11</div>
+        <div class="section-container">
+            <div class="section-header">
+                <div class="section-part"><span class="ornament">★</span>Part 11<span class="ornament">★</span></div>
+                <h2 class="section-title font-display">Simple Dictums</h2>
+                <div class="section-divider"></div>
+            </div>
+
+            <div class="quote-block">
+                <div class="quote-text">
+                    Hit the ground running; consolidate control; ask questions of everyone wherever you go; manage by wandering around; determine the basic problems and hit them head-on; when attacked, counterattack; stick to your guns; spend your political capital to reach your goals.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Make Friends -->
+    <section id="friends" class="section-gold" data-theme="gold">
+        <div class="section-number font-display">12</div>
+        <div class="section-container">
+            <div class="section-header">
+                <div class="section-part"><span class="ornament">★</span>Part 12<span class="ornament">★</span></div>
+                <h2 class="section-title font-display">The Room Strategy</h2>
+                <div class="section-divider"></div>
+            </div>
+
+            <div class="quote-block">
+                <div class="quote-text quote-highlight font-display">
+                    I always believed that as long as I could take someone in the room with me, I would make him my friend.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Simplify -->
+    <section id="simplify" class="section-presidential" data-theme="presidential">
+        <div class="section-number font-display">13</div>
+        <div class="section-container">
+            <div class="section-header">
+                <div class="section-part"><span class="ornament">★</span>Part 13<span class="ornament">★</span></div>
+                <h2 class="section-title font-display">Simplify the Concept</h2>
+                <div class="section-divider"></div>
+            </div>
+
+            <div class="quote-block">
+                <div class="quote-text">
+                    Simplify the concept that "we are trying to construct a more inclusive society" into "we are going to make a country in which no one is left out."
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Forgiveness -->
+    <section id="forgiveness" class="section-light" data-theme="light">
+        <div class="section-number font-display">14</div>
+        <div class="section-container">
+            <div class="section-header">
+                <div class="section-part"><span class="ornament">★</span>Part 14<span class="ornament">★</span></div>
+                <h2 class="section-title font-display">Principle of Forgiveness</h2>
+                <div class="section-divider"></div>
+            </div>
+
+            <div class="quote-block">
+                <div class="quote-text quote-highlight font-display">
+                    It is enough if the man does no wrong hereafter.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- For All Time -->
+    <section id="alltime" class="section-gold" data-theme="gold">
+        <div class="section-number font-display">15</div>
+        <div class="section-container">
+            <div class="section-header">
+                <div class="section-part"><span class="ornament">★</span>Part 15<span class="ornament">★</span></div>
+                <h2 class="section-title font-display">For All Time to Come</h2>
+                <div class="section-divider"></div>
+            </div>
+
+            <div class="quote-block">
+                <div class="quote-text">
+                    This contest is not merely for today, but for all time to come. I happen temporarily to occupy this big White House. It is in order that each of you may have an open field and a fair chance for your industry, enterprise and intelligence. It is for this the struggle should be maintained.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Using Capital -->
+    <section id="capital" class="section-presidential" data-theme="presidential">
+        <div class="section-number font-display">16</div>
+        <div class="section-container">
+            <div class="section-header">
+                <div class="section-part"><span class="ornament">★</span>Part 16<span class="ornament">★</span></div>
+                <h2 class="section-title font-display">Political Capital</h2>
+                <div class="section-divider"></div>
+            </div>
+
+            <div class="quote-block">
+                <div class="quote-text quote-highlight font-display">
+                    I was just elected by the biggest popular margin in history. But it is in the nature of what a president does. He uses up his capital. So get off your asses and do everything possible to get everything in my program passed before the aura and halo disappear.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Conviction -->
+    <section id="conviction" class="section-light" data-theme="light">
+        <div class="section-number font-display">17</div>
+        <div class="section-container">
+            <div class="section-header">
+                <div class="section-part"><span class="ornament">★</span>Part 17<span class="ornament">★</span></div>
+                <h2 class="section-title font-display">What Convinces</h2>
+                <div class="section-divider"></div>
+            </div>
+
+            <div class="quote-block">
+                <div class="quote-text quote-highlight font-display">
+                    What convinces is conviction. You simply have to believe in the argument you are advancing.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Communal Memory -->
+    <section id="memory" class="section-gold" data-theme="gold">
+        <div class="section-number font-display">18</div>
+        <div class="section-container">
+            <div class="section-header">
+                <div class="section-part"><span class="ornament">★</span>Part 18<span class="ornament">★</span></div>
+                <h2 class="section-title font-display">Enduring Place</h2>
+                <div class="section-divider"></div>
+            </div>
+
+            <div class="quote-block">
+                <div class="quote-text">
+                    The fame they craved bears little resemblance to today's cult of celebrity. For these leaders, the final measure of their achievements would be realized by their admittance to an enduring place in communal memory.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Understanding History -->
+    <section id="history" class="section-presidential" data-theme="presidential">
+        <div class="section-number font-display">19</div>
+        <div class="section-container">
+            <div class="section-header">
+                <div class="section-part"><span class="ornament">★</span>Part 19<span class="ornament">★</span></div>
+                <h2 class="section-title font-display">The Best Vehicle</h2>
+                <div class="section-divider"></div>
+            </div>
+
+            <div class="quote-block">
+                <div class="quote-text quote-highlight font-display">
+                    He considered history, an understanding of how we came to be, the best vehicle for understanding who we are and where we are going.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p class="footer-title font-display">Leadership</p>
+        <p class="footer-subtitle">"For all time to come"</p>
+        <div style="margin: 3rem 0 1rem;">
+            <div style="width: 60px; height: 1px; background: var(--presidential-gold); margin: 0 auto;"></div>
+        </div>
+        
+        <!-- Back to Library Button -->
+        <div style="margin-bottom: 3rem;">
+            <a href="index.html" style="display: inline-flex; align-items: center; gap: 0.5rem; color: var(--presidential-gold); text-decoration: none; font-size: 0.875rem; padding: 0.75rem 1.5rem; background: rgba(212, 175, 55, 0.1); border-radius: 50px; border: 1px solid var(--presidential-gold); transition: all 0.3s ease;" onmouseover="this.style.background='rgba(212, 175, 55, 0.2)'; this.style.transform='translateY(-2px)';" onmouseout="this.style.background='rgba(212, 175, 55, 0.1)'; this.style.transform='translateY(0)';">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M19 12H5M12 19l-7-7 7-7"/>
+                </svg>
+                <span>Back to Library</span>
+            </a>
+        </div>
+        
+        <p style="font-size: 0.875rem; margin-bottom: 0.5rem;">Inspired by Doris Kearns Goodwin's "Leadership"</p>
+        <p style="font-size: 0.875rem; margin-bottom: 2rem; opacity: 0.7;">Designed & crafted by <a href="https://thisisalimirza.com" target="_blank" rel="noopener noreferrer" style="color: var(--presidential-gold); text-decoration: none; border-bottom: 1px solid var(--presidential-gold); transition: all 0.3s ease;">Ali Mirza</a></p>
+        
+        <!-- Social Links -->
+        <div style="margin: 2rem 0;">
+            <div style="display: flex; justify-content: center; align-items: center; gap: 1.5rem; flex-wrap: wrap;">
+                <a href="https://twitter.com/thisisalimirza" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Twitter">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                    </svg>
+                    <span>@thisisalimirza</span>
+                </a>
+                <a href="https://linkedin.com/in/thisisalimirza" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="LinkedIn">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M20.5 2h-17A1.5 1.5 0 002 3.5v17A1.5 1.5 0 003.5 22h17a1.5 1.5 0 001.5-1.5v-17A1.5 1.5 0 0020.5 2zM8 19H5v-9h3zM6.5 8.25A1.75 1.75 0 118.3 6.5a1.78 1.78 0 01-1.8 1.75zM19 19h-3v-4.74c0-1.42-.6-1.93-1.38-1.93A1.74 1.74 0 0013 14.19a.66.66 0 000 .14V19h-3v-9h2.9v1.3a3.11 3.11 0 012.7-1.4c1.55 0 3.36.86 3.36 3.66z"/>
+                    </svg>
+                    <span>@thisisalimirza</span>
+                </a>
+                <a href="https://instagram.com/thisisalimirza" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Instagram">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                    </svg>
+                    <span>@thisisalimirza</span>
+                </a>
+                <a href="https://github.com/thisisalimirza" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="GitHub">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                    </svg>
+                    <span>@thisisalimirza</span>
+                </a>
+            </div>
+        </div>
+        
+        <p style="font-size: 0.75rem; opacity: 0.5; line-height: 1.6; max-width: 600px; margin: 2rem auto 0;">
+            Medical student, entrepreneur, and builder pursuing his Personal Legend through healthcare innovation, investment, and empowering human potential.
+        </p>
+    </footer>
+
+    <script>
+        // Add attributions to all quote blocks
+        document.addEventListener('DOMContentLoaded', () => {
+            const quoteBlocks = document.querySelectorAll('.quote-block');
+            quoteBlocks.forEach(block => {
+                if (!block.querySelector('.quote-attribution')) {
+                    const attribution = document.createElement('div');
+                    attribution.className = 'quote-attribution';
+                    attribution.textContent = 'Leadership';
+                    block.appendChild(attribution);
+                }
+            });
+        });
+
+        // Progress Bar
+        function updateProgressBar() {
+            const windowHeight = window.innerHeight;
+            const documentHeight = document.documentElement.scrollHeight - windowHeight;
+            const scrolled = window.scrollY;
+            const progress = (scrolled / documentHeight) * 100;
+            document.getElementById('progressBar').style.width = progress + '%';
+        }
+
+        // Navigation Dots
+        const sections = document.querySelectorAll('section[id]');
+        const navDotsContainer = document.getElementById('navDots');
+        
+        sections.forEach((section, index) => {
+            if (section.id && section.hasAttribute('data-theme')) {
+                const dot = document.createElement('div');
+                dot.className = 'nav-dot';
+                dot.setAttribute('data-section', section.id);
+                
+                const label = document.createElement('span');
+                label.className = 'nav-dot-label';
+                label.textContent = section.querySelector('.section-title').textContent;
+                
+                dot.appendChild(label);
+                dot.addEventListener('click', () => {
+                    section.scrollIntoView({ behavior: 'smooth' });
+                });
+                
+                navDotsContainer.appendChild(dot);
+            }
+        });
+
+        // Update Active Dot
+        function updateActiveNav() {
+            const dots = document.querySelectorAll('.nav-dot');
+            const scrollPos = window.scrollY + window.innerHeight / 2;
+            
+            sections.forEach((section, index) => {
+                if (section.id) {
+                    const sectionTop = section.offsetTop;
+                    const sectionBottom = sectionTop + section.offsetHeight;
+                    
+                    if (scrollPos >= sectionTop && scrollPos < sectionBottom) {
+                        dots.forEach(dot => dot.classList.remove('active'));
+                        const activeDot = document.querySelector(`[data-section="${section.id}"]`);
+                        if (activeDot) {
+                            activeDot.classList.add('active');
+                        }
+                    }
+                }
+            });
+        }
+
+        // Intersection Observer for Fade-in Effects
+        const observerOptions = {
+            threshold: 0.15,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Observe section headers and quote blocks
+        document.querySelectorAll('.section-header, .quote-block').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Scroll Event Listeners
+        let ticking = false;
+        window.addEventListener('scroll', () => {
+            if (!ticking) {
+                window.requestAnimationFrame(() => {
+                    updateProgressBar();
+                    updateActiveNav();
+                    ticking = false;
+                });
+                ticking = true;
+            }
+        });
+
+        // Initial calls
+        updateProgressBar();
+        updateActiveNav();
+
+        // Hide scroll indicator after scrolling
+        let hasScrolled = false;
+        window.addEventListener('scroll', () => {
+            if (!hasScrolled && window.scrollY > 100) {
+                const scrollIndicator = document.querySelector('.scroll-indicator');
+                if (scrollIndicator) {
+                    scrollIndicator.style.opacity = '0';
+                }
+                hasScrolled = true;
+            }
+        });
+    </script>
+</body>
+</html>
