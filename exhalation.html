@@ -1,0 +1,967 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exhalation - A Journey Through Ted Chiang's Vision</title>
+    
+    <!-- Meta Tags -->
+    <meta name="description" content="An immersive journey through Ted Chiang's Exhalation. Explore profound insights on memory, consciousness, and what it means to be human.">
+    <meta name="author" content="Ali Mirza">
+    
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Exhalation - A Journey Through Ted Chiang's Vision">
+    <meta property="og:description" content="Beautiful, immersive experience through Ted Chiang's Exhalation, crafted by Ali Mirza (@thisisalimirza).">
+    <meta property="og:url" content="https://thisisalimirza.com">
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@thisisalimirza">
+    <meta name="twitter:creator" content="@thisisalimirza">
+    <meta name="twitter:title" content="Exhalation - A Journey">
+    <meta name="twitter:description" content="An immersive experience through Ted Chiang's Exhalation.">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --tech-dark: #0a0e1a;
+            --tech-blue: #1e3a5f;
+            --tech-cyan: #4fc3f7;
+            --tech-light: #e3f2fd;
+            
+            --sand-50: #faf8f5;
+            --sand-100: #f5f1ea;
+            --sand-400: #c9b896;
+            --sand-600: #9d8760;
+            --sand-700: #7a6847;
+            --sand-900: #3d3426;
+            
+            --slate-300: #cbd5e1;
+            --slate-700: #334155;
+            --slate-800: #1e293b;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Crimson Text', serif;
+            background: var(--sand-50);
+            color: var(--sand-900);
+            line-height: 1.7;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"><filter id="noise"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="4" /></filter><rect width="100" height="100" filter="url(%23noise)" opacity="0.03"/></svg>');
+            pointer-events: none;
+            z-index: 9999;
+            mix-blend-mode: overlay;
+        }
+
+        .font-display {
+            font-family: 'Cormorant Garamond', serif;
+        }
+
+        /* Progress Bar */
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 3px;
+            background: var(--tech-cyan);
+            z-index: 1000;
+            transition: width 0.1s ease-out;
+        }
+
+        /* Navigation Dots */
+        .nav-dots {
+            position: fixed;
+            right: 2rem;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 100;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .nav-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: transparent;
+            border: 2px solid var(--sand-400);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-dot:hover {
+            background: var(--tech-cyan);
+            border-color: var(--tech-cyan);
+            transform: scale(1.3);
+        }
+
+        .nav-dot.active {
+            background: var(--tech-cyan);
+            border-color: var(--tech-cyan);
+        }
+
+        .nav-dot-label {
+            position: absolute;
+            right: 2rem;
+            top: 50%;
+            transform: translateY(-50%);
+            white-space: nowrap;
+            background: rgba(0, 0, 0, 0.85);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .nav-dot:hover .nav-dot-label {
+            opacity: 1;
+        }
+
+        @media (max-width: 1024px) {
+            .nav-dots {
+                display: none;
+            }
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            background: linear-gradient(135deg, var(--tech-dark) 0%, var(--tech-blue) 100%);
+            overflow: hidden;
+            color: var(--tech-light);
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: 
+                radial-gradient(1px 1px at 20% 30%, rgba(79, 195, 247, 0.3), transparent),
+                radial-gradient(1px 1px at 60% 70%, rgba(79, 195, 247, 0.3), transparent),
+                radial-gradient(1px 1px at 50% 50%, rgba(79, 195, 247, 0.3), transparent),
+                radial-gradient(1px 1px at 80% 10%, rgba(79, 195, 247, 0.3), transparent);
+            background-size: 200% 200%;
+            animation: circuitPulse 8s ease-in-out infinite;
+            opacity: 0.4;
+        }
+
+        @keyframes circuitPulse {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.6; }
+        }
+
+        .hero-content {
+            z-index: 10;
+            text-align: center;
+            padding: 2rem;
+            max-width: 900px;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1.5s ease-out forwards;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-subtitle {
+            color: var(--tech-cyan);
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            font-size: 0.875rem;
+            margin-bottom: 2rem;
+            opacity: 0;
+            animation: fadeInUp 1.5s ease-out 0.5s forwards;
+        }
+
+        .hero-title {
+            font-size: clamp(3rem, 10vw, 7rem);
+            font-weight: 700;
+            margin-bottom: 2rem;
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+            color: white;
+        }
+
+        .hero-author {
+            font-size: clamp(1.5rem, 3vw, 2.5rem);
+            font-style: italic;
+            color: var(--tech-cyan);
+            margin-bottom: 2rem;
+            opacity: 0;
+            animation: fadeInUp 1.5s ease-out 0.8s forwards;
+        }
+
+        .hero-divider {
+            width: 100px;
+            height: 2px;
+            background: var(--tech-cyan);
+            margin: 2rem auto;
+            opacity: 0;
+            animation: fadeInUp 1.5s ease-out 1s forwards;
+        }
+
+        .hero-quote {
+            font-size: clamp(1.125rem, 2vw, 1.5rem);
+            color: var(--tech-light);
+            font-style: italic;
+            max-width: 700px;
+            margin: 0 auto;
+            opacity: 0;
+            animation: fadeInUp 1.5s ease-out 1.2s forwards;
+        }
+
+        .hero-credit {
+            margin-top: 3rem;
+            font-size: 0.875rem;
+            opacity: 0;
+            animation: fadeInUp 1.5s ease-out 2.5s forwards;
+            color: var(--tech-light);
+        }
+
+        .hero-credit a {
+            color: var(--tech-cyan);
+            text-decoration: none;
+            border-bottom: 1px solid var(--tech-cyan);
+            transition: all 0.3s ease;
+        }
+
+        .hero-credit a:hover {
+            color: white;
+            border-bottom-color: white;
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            opacity: 0;
+            animation: fadeInUp 1.5s ease-out 2s forwards, bounce 2s ease-in-out 3s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(-10px); }
+        }
+
+        .scroll-arrow {
+            width: 24px;
+            height: 24px;
+            border-left: 2px solid var(--tech-cyan);
+            border-bottom: 2px solid var(--tech-cyan);
+            transform: rotate(-45deg);
+        }
+
+        /* Section Styles */
+        section {
+            min-height: 100vh;
+            position: relative;
+            padding: 8rem 2rem;
+            transition: background-color 0.8s ease;
+        }
+
+        .section-tech {
+            background: linear-gradient(135deg, var(--tech-dark) 0%, #0f1729 100%);
+            color: var(--tech-light);
+        }
+
+        .section-tech::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: 
+                radial-gradient(1px 1px at 25% 25%, rgba(79, 195, 247, 0.1), transparent),
+                radial-gradient(1px 1px at 75% 75%, rgba(79, 195, 247, 0.1), transparent);
+            background-size: 60px 60px;
+            opacity: 0.3;
+        }
+
+        .section-light {
+            background: linear-gradient(135deg, #faf8f5 0%, #f5f1ea 100%);
+            color: var(--sand-900);
+        }
+
+        .section-twilight {
+            background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+            color: var(--slate-300);
+        }
+
+        .section-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 10;
+        }
+
+        .section-number {
+            position: absolute;
+            top: 2rem;
+            right: 2rem;
+            font-size: 6rem;
+            font-weight: 700;
+            opacity: 0.08;
+            line-height: 1;
+            pointer-events: none;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 8rem;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 1s ease-out;
+            position: relative;
+            padding: 3rem 2rem;
+        }
+
+        .section-header::before {
+            content: '◆';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 1.5rem;
+            opacity: 0.2;
+        }
+
+        .section-header.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .section-part {
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+
+        .section-tech .section-part {
+            color: var(--tech-cyan);
+        }
+
+        .section-light .section-part,
+        .section-twilight .section-part {
+            color: var(--sand-500);
+        }
+
+        .ornament {
+            display: inline-block;
+            margin: 0 1rem;
+            opacity: 0.3;
+            font-size: 0.875rem;
+        }
+
+        .section-title {
+            font-size: clamp(2.75rem, 6vw, 5rem);
+            font-weight: 600;
+            margin-bottom: 2rem;
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+        }
+
+        .section-divider {
+            width: 80px;
+            height: 2px;
+            margin: 2.5rem auto 0;
+            position: relative;
+        }
+
+        .section-tech .section-divider {
+            background: var(--tech-cyan);
+        }
+
+        .section-light .section-divider,
+        .section-twilight .section-divider {
+            background: var(--sand-400);
+        }
+
+        /* Quote Block */
+        .quote-block {
+            max-width: 900px;
+            margin: 0 auto 8rem;
+            padding: 4rem 3rem;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 1s ease-out;
+            position: relative;
+            border-radius: 8px;
+        }
+
+        .section-tech .quote-block {
+            background: rgba(79, 195, 247, 0.05);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .section-light .quote-block {
+            background: rgba(255, 255, 255, 0.6);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        .section-twilight .quote-block {
+            background: rgba(255, 255, 255, 0.03);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .quote-block::before,
+        .quote-block::after {
+            content: '"';
+            position: absolute;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 8rem;
+            font-weight: 700;
+            opacity: 0.08;
+            line-height: 1;
+        }
+
+        .quote-block::before {
+            top: 1rem;
+            left: 1rem;
+        }
+
+        .quote-block::after {
+            content: '"';
+            bottom: 1rem;
+            right: 1rem;
+        }
+
+        .quote-block.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .quote-text {
+            font-size: clamp(1.5rem, 3vw, 2.25rem);
+            line-height: 1.5;
+            text-align: center;
+            margin-bottom: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .quote-highlight {
+            font-size: clamp(2rem, 4.5vw, 4rem);
+            font-weight: 600;
+            line-height: 1.2;
+            letter-spacing: -0.02em;
+        }
+
+        .section-tech .quote-highlight {
+            color: var(--tech-cyan);
+        }
+
+        .section-light .quote-highlight {
+            color: var(--sand-800);
+        }
+
+        .quote-attribution {
+            text-align: center;
+            margin-top: 2rem;
+            font-size: 0.875rem;
+            opacity: 0.4;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            position: relative;
+            z-index: 1;
+        }
+
+        .quote-attribution::before {
+            content: '';
+            display: block;
+            width: 40px;
+            height: 1px;
+            background: currentColor;
+            margin: 0 auto 1rem;
+        }
+
+        /* Footer */
+        footer {
+            padding: 6rem 2rem;
+            text-align: center;
+            background: var(--tech-dark);
+            color: var(--tech-light);
+        }
+
+        .footer-title {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--tech-cyan);
+        }
+
+        .footer-subtitle {
+            font-style: italic;
+            margin-bottom: 2rem;
+        }
+
+        .social-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--tech-light);
+            text-decoration: none;
+            font-size: 0.875rem;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            transition: all 0.3s ease;
+            border: 1px solid transparent;
+        }
+
+        .social-link:hover {
+            color: var(--tech-cyan);
+            background: rgba(79, 195, 247, 0.1);
+            border-color: var(--tech-cyan);
+            transform: translateY(-2px);
+        }
+
+        .social-link svg {
+            transition: transform 0.3s ease;
+        }
+
+        .social-link:hover svg {
+            transform: scale(1.1);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            section {
+                padding: 4rem 1.5rem;
+            }
+
+            .quote-block {
+                padding: 3rem 2rem;
+                margin-bottom: 5rem;
+            }
+
+            .quote-block::before,
+            .quote-block::after {
+                font-size: 5rem;
+            }
+
+            .section-number {
+                font-size: 4rem;
+                top: 1rem;
+                right: 1rem;
+            }
+
+            .social-link span {
+                display: none;
+            }
+
+            .social-link {
+                padding: 0.75rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="progress-bar" id="progressBar"></div>
+
+    <nav class="nav-dots" id="navDots"></nav>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-content">
+            <p class="hero-subtitle">A Journey Through</p>
+            <h1 class="hero-title font-display">Exhalation</h1>
+            <p class="hero-author">Ted Chiang</p>
+            <div class="hero-divider"></div>
+            <p class="hero-quote">"People are made of stories."</p>
+            <p class="hero-credit">
+                Crafted by <a href="https://thisisalimirza.com" target="_blank" rel="noopener noreferrer">Ali Mirza</a>
+                <span style="margin: 0 0.5rem; opacity: 0.3;">·</span>
+                <a href="https://twitter.com/thisisalimirza" target="_blank" rel="noopener noreferrer" style="color: var(--tech-light); text-decoration: none; border-bottom: 1px solid transparent; transition: all 0.3s ease;">@thisisalimirza</a>
+            </p>
+        </div>
+        <div class="scroll-indicator">
+            <div class="scroll-arrow"></div>
+        </div>
+    </section>
+
+    <!-- Grief & Fire -->
+    <section id="grief" class="section-tech" data-theme="tech">
+        <div class="section-number font-display">1</div>
+        <div class="section-container">
+            <div class="section-header">
+                <div class="section-part"><span class="ornament">✦</span>Part 1<span class="ornament">✦</span></div>
+                <h2 class="section-title font-display">Grief & Fire</h2>
+                <div class="section-divider"></div>
+            </div>
+
+            <div class="quote-block">
+                <div class="quote-text quote-highlight font-display">
+                    Like infernal fire, grief burns but does not consume; instead, it makes the heart vulnerable to further suffering.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Opportunities Lost -->
+    <section id="opportunities" class="section-light" data-theme="light">
+        <div class="section-number font-display">2</div>
+        <div class="section-container">
+            <div class="section-header">
+                <div class="section-part"><span class="ornament">✦</span>Part 2<span class="ornament">✦</span></div>
+                <h2 class="section-title font-display">What Never Returns</h2>
+                <div class="section-divider"></div>
+            </div>
+
+            <div class="quote-block">
+                <div class="quote-text quote-highlight font-display">
+                    Four things do not come back: the spoken word, the sped arrow, the past life, and the neglected opportunity.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- The Nature of Consumption -->
+    <section id="consumption" class="section-tech" data-theme="tech">
+        <div class="section-number font-display">3</div>
+        <div class="section-container">
+            <div class="section-header">
+                <div class="section-part"><span class="ornament">✦</span>Part 3<span class="ornament">✦</span></div>
+                <h2 class="section-title font-display">The Nature of Consumption</h2>
+                <div class="section-divider"></div>
+            </div>
+
+            <div class="quote-block">
+                <div class="quote-text">
+                    We are not really consuming air at all. The amount of air that I draw from each day's new pair of lungs is exactly as much as seeps out through the joints of my limbs and the seams of my casing, exactly as much as I am adding to the atmosphere around me.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Civilization -->
+    <section id="civilization" class="section-twilight" data-theme="twilight">
+        <div class="section-number font-display">4</div>
+        <div class="section-container">
+            <div class="section-header">
+                <div class="section-part"><span class="ornament">✦</span>Part 4<span class="ornament">✦</span></div>
+                <h2 class="section-title font-display">The Foundation of Civilization</h2>
+                <div class="section-divider"></div>
+            </div>
+
+            <div class="quote-block">
+                <div class="quote-text quote-highlight font-display">
+                    Civilization now depends on self-deception. Perhaps it always has.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stories -->
+    <section id="stories" class="section-tech" data-theme="tech">
+        <div class="section-number font-display">5</div>
+        <div class="section-container">
+            <div class="section-header">
+                <div class="section-part"><span class="ornament">✦</span>Part 5<span class="ornament">✦</span></div>
+                <h2 class="section-title font-display">Made of Stories</h2>
+                <div class="section-divider"></div>
+            </div>
+
+            <div class="quote-block">
+                <div class="quote-text quote-highlight font-display">
+                    People are made of stories.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Memory & Narrative -->
+    <section id="memory" class="section-light" data-theme="light">
+        <div class="section-number font-display">6</div>
+        <div class="section-container">
+            <div class="section-header">
+                <div class="section-part"><span class="ornament">✦</span>Part 6<span class="ornament">✦</span></div>
+                <h2 class="section-title font-display">Perfect Memory</h2>
+                <div class="section-divider"></div>
+            </div>
+
+            <div class="quote-block">
+                <div class="quote-text">
+                    It seemed to me that a perfect memory couldn't be a narrative any more than unedited security-cam footage could be a feature film.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Transformation -->
+    <section id="transformation" class="section-tech" data-theme="tech">
+        <div class="section-number font-display">7</div>
+        <div class="section-container">
+            <div class="section-header">
+                <div class="section-part"><span class="ornament">✦</span>Part 7<span class="ornament">✦</span></div>
+                <h2 class="section-title font-display">Cultural Transformation</h2>
+                <div class="section-divider"></div>
+            </div>
+
+            <div class="quote-block">
+                <div class="quote-text">
+                    Within our minds, each of us will be transformed from an oral culture into a literate one.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Digital Memory -->
+    <section id="digital" class="section-twilight" data-theme="twilight">
+        <div class="section-number font-display">8</div>
+        <div class="section-container">
+            <div class="section-header">
+                <div class="section-part"><span class="ornament">✦</span>Part 8<span class="ornament">✦</span></div>
+                <h2 class="section-title font-display">Digital Memory</h2>
+                <div class="section-divider"></div>
+            </div>
+
+            <div class="quote-block">
+                <div class="quote-text">
+                    What digital memory will do is change those stories from fabulations that emphasize our best acts and elide our worst, into ones that—I hope—acknowledge our fallibility and make us less judgmental about the fallibility of others.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Prayer -->
+    <section id="prayer" class="section-light" data-theme="light">
+        <div class="section-number font-display">9</div>
+        <div class="section-container">
+            <div class="section-header">
+                <div class="section-part"><span class="ornament">✦</span>Part 9<span class="ornament">✦</span></div>
+                <h2 class="section-title font-display">A Prayer for Balance</h2>
+                <div class="section-divider"></div>
+            </div>
+
+            <div class="quote-block">
+                <div class="quote-text">
+                    Let me always be inquisitive, but never be suspicious.
+                </div>
+            </div>
+
+            <div class="quote-block">
+                <div class="quote-text">
+                    Let me be compassionate while remaining true to my convictions.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Self-Reliance -->
+    <section id="reliance" class="section-tech" data-theme="tech">
+        <div class="section-number font-display">10</div>
+        <div class="section-container">
+            <div class="section-header">
+                <div class="section-part"><span class="ornament">✦</span>Part 10<span class="ornament">✦</span></div>
+                <h2 class="section-title font-display">Proof of Capability</h2>
+                <div class="section-divider"></div>
+            </div>
+
+            <div class="quote-block">
+                <div class="quote-text quote-highlight font-display">
+                    If we have only ever been on our own, then our successes in spite of that are proof of our capabilities.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p class="footer-title font-display">Exhalation</p>
+        <p class="footer-subtitle">"People are made of stories"</p>
+        <div style="margin: 3rem 0 1rem;">
+            <div style="width: 60px; height: 1px; background: var(--tech-cyan); margin: 0 auto;"></div>
+        </div>
+        <p style="font-size: 0.875rem; margin-bottom: 0.5rem;">Inspired by Ted Chiang's "Exhalation"</p>
+        <p style="font-size: 0.875rem; margin-bottom: 2rem; opacity: 0.7;">Designed & crafted by <a href="https://thisisalimirza.com" target="_blank" rel="noopener noreferrer" style="color: var(--tech-cyan); text-decoration: none; border-bottom: 1px solid var(--tech-cyan); transition: all 0.3s ease;">Ali Mirza</a></p>
+        
+        <!-- Social Links -->
+        <div style="margin: 2rem 0;">
+            <div style="display: flex; justify-content: center; align-items: center; gap: 1.5rem; flex-wrap: wrap;">
+                <a href="https://twitter.com/thisisalimirza" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Twitter">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                    </svg>
+                    <span>@thisisalimirza</span>
+                </a>
+                <a href="https://linkedin.com/in/thisisalimirza" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="LinkedIn">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M20.5 2h-17A1.5 1.5 0 002 3.5v17A1.5 1.5 0 003.5 22h17a1.5 1.5 0 001.5-1.5v-17A1.5 1.5 0 0020.5 2zM8 19H5v-9h3zM6.5 8.25A1.75 1.75 0 118.3 6.5a1.78 1.78 0 01-1.8 1.75zM19 19h-3v-4.74c0-1.42-.6-1.93-1.38-1.93A1.74 1.74 0 0013 14.19a.66.66 0 000 .14V19h-3v-9h2.9v1.3a3.11 3.11 0 012.7-1.4c1.55 0 3.36.86 3.36 3.66z"/>
+                    </svg>
+                    <span>@thisisalimirza</span>
+                </a>
+                <a href="https://instagram.com/thisisalimirza" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Instagram">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                    </svg>
+                    <span>@thisisalimirza</span>
+                </a>
+                <a href="https://github.com/thisisalimirza" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="GitHub">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                    </svg>
+                    <span>@thisisalimirza</span>
+                </a>
+            </div>
+        </div>
+        
+        <p style="font-size: 0.75rem; opacity: 0.5; line-height: 1.6; max-width: 600px; margin: 2rem auto 0;">
+            Medical student, entrepreneur, and builder pursuing his Personal Legend through healthcare innovation, investment, and empowering human potential.
+        </p>
+    </footer>
+
+    <script>
+        // Add attributions to all quote blocks
+        document.addEventListener('DOMContentLoaded', () => {
+            const quoteBlocks = document.querySelectorAll('.quote-block');
+            quoteBlocks.forEach(block => {
+                if (!block.querySelector('.quote-attribution')) {
+                    const attribution = document.createElement('div');
+                    attribution.className = 'quote-attribution';
+                    attribution.textContent = 'Exhalation';
+                    block.appendChild(attribution);
+                }
+            });
+        });
+
+        // Progress Bar
+        function updateProgressBar() {
+            const windowHeight = window.innerHeight;
+            const documentHeight = document.documentElement.scrollHeight - windowHeight;
+            const scrolled = window.scrollY;
+            const progress = (scrolled / documentHeight) * 100;
+            document.getElementById('progressBar').style.width = progress + '%';
+        }
+
+        // Navigation Dots
+        const sections = document.querySelectorAll('section[id]');
+        const navDotsContainer = document.getElementById('navDots');
+        
+        sections.forEach((section, index) => {
+            if (section.id && section.hasAttribute('data-theme')) {
+                const dot = document.createElement('div');
+                dot.className = 'nav-dot';
+                dot.setAttribute('data-section', section.id);
+                
+                const label = document.createElement('span');
+                label.className = 'nav-dot-label';
+                label.textContent = section.querySelector('.section-title').textContent;
+                
+                dot.appendChild(label);
+                dot.addEventListener('click', () => {
+                    section.scrollIntoView({ behavior: 'smooth' });
+                });
+                
+                navDotsContainer.appendChild(dot);
+            }
+        });
+
+        // Update Active Dot
+        function updateActiveNav() {
+            const dots = document.querySelectorAll('.nav-dot');
+            const scrollPos = window.scrollY + window.innerHeight / 2;
+            
+            sections.forEach((section, index) => {
+                if (section.id) {
+                    const sectionTop = section.offsetTop;
+                    const sectionBottom = sectionTop + section.offsetHeight;
+                    
+                    if (scrollPos >= sectionTop && scrollPos < sectionBottom) {
+                        dots.forEach(dot => dot.classList.remove('active'));
+                        const activeDot = document.querySelector(`[data-section="${section.id}"]`);
+                        if (activeDot) {
+                            activeDot.classList.add('active');
+                        }
+                    }
+                }
+            });
+        }
+
+        // Intersection Observer for Fade-in Effects
+        const observerOptions = {
+            threshold: 0.15,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Observe section headers and quote blocks
+        document.querySelectorAll('.section-header, .quote-block').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Scroll Event Listeners
+        let ticking = false;
+        window.addEventListener('scroll', () => {
+            if (!ticking) {
+                window.requestAnimationFrame(() => {
+                    updateProgressBar();
+                    updateActiveNav();
+                    ticking = false;
+                });
+                ticking = true;
+            }
+        });
+
+        // Initial calls
+        updateProgressBar();
+        updateActiveNav();
+
+        // Hide scroll indicator after scrolling
+        let hasScrolled = false;
+        window.addEventListener('scroll', () => {
+            if (!hasScrolled && window.scrollY > 100) {
+                const scrollIndicator = document.querySelector('.scroll-indicator');
+                if (scrollIndicator) {
+                    scrollIndicator.style.opacity = '0';
+                }
+                hasScrolled = true;
+            }
+        });
+    </script>
+</body>
+</html>
