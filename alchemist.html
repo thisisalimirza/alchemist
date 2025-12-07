@@ -1,0 +1,1295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Alchemist - A Journey to Your Personal Legend</title>
+    
+    <!-- Meta Tags for Social Sharing -->
+    <meta name="description" content="A beautiful journey through Paulo Coelho's The Alchemist. Explore timeless wisdom about dreams, personal legends, and the pursuit of your destiny.">
+    <meta name="author" content="Ali Mirza">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="The Alchemist - A Journey to Your Personal Legend">
+    <meta property="og:description" content="A beautiful journey through Paulo Coelho's The Alchemist, crafted by Ali Mirza (@thisisalimirza).">
+    <meta property="og:url" content="https://thisisalimirza.com">
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@thisisalimirza">
+    <meta name="twitter:creator" content="@thisisalimirza">
+    <meta name="twitter:title" content="The Alchemist - A Journey to Your Personal Legend">
+    <meta name="twitter:description" content="A beautiful journey through Paulo Coelho's The Alchemist, crafted by Ali Mirza.">>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --sand-50: #faf8f5;
+            --sand-100: #f5f1ea;
+            --sand-200: #e8dfd0;
+            --sand-400: #c9b896;
+            --sand-500: #b39d7a;
+            --sand-600: #9d8760;
+            --sand-700: #7a6847;
+            --sand-800: #5a4d35;
+            --sand-900: #3d3426;
+            
+            --night-900: #1a1a2e;
+            --night-800: #16213e;
+            
+            --amber-200: #fde68a;
+            --amber-500: #f59e0b;
+            
+            --slate-300: #cbd5e1;
+            --slate-400: #94a3b8;
+            --slate-700: #334155;
+            --slate-800: #1e293b;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Crimson Text', serif;
+            background: var(--sand-50);
+            color: var(--sand-900);
+            line-height: 1.7;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"><filter id="noise"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="4" /></filter><rect width="100" height="100" filter="url(%23noise)" opacity="0.03"/></svg>');
+            pointer-events: none;
+            z-index: 9999;
+            mix-blend-mode: overlay;
+        }
+
+        .font-display {
+            font-family: 'Cormorant Garamond', serif;
+        }
+
+        /* Decorative Elements */
+        .decorative-corner {
+            position: absolute;
+            width: 60px;
+            height: 60px;
+            opacity: 0.15;
+        }
+
+        .decorative-corner.top-left {
+            top: 2rem;
+            left: 2rem;
+            border-top: 2px solid currentColor;
+            border-left: 2px solid currentColor;
+        }
+
+        .decorative-corner.top-right {
+            top: 2rem;
+            right: 2rem;
+            border-top: 2px solid currentColor;
+            border-right: 2px solid currentColor;
+        }
+
+        .decorative-corner.bottom-left {
+            bottom: 2rem;
+            left: 2rem;
+            border-bottom: 2px solid currentColor;
+            border-left: 2px solid currentColor;
+        }
+
+        .decorative-corner.bottom-right {
+            bottom: 2rem;
+            right: 2rem;
+            border-bottom: 2px solid currentColor;
+            border-right: 2px solid currentColor;
+        }
+
+        .ornament {
+            display: inline-block;
+            margin: 0 1rem;
+            opacity: 0.3;
+            font-size: 0.875rem;
+        }
+
+        /* Progress Bar */
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 3px;
+            background: var(--sand-600);
+            z-index: 1000;
+            transition: width 0.1s ease-out;
+        }
+
+        /* Navigation */
+        .nav-dots {
+            position: fixed;
+            right: 2rem;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 100;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .nav-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: transparent;
+            border: 2px solid var(--sand-400);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-dot:hover {
+            background: var(--sand-600);
+            transform: scale(1.3);
+        }
+
+        .nav-dot.active {
+            background: var(--sand-600);
+            border-color: var(--sand-700);
+        }
+
+        .nav-dot-label {
+            position: absolute;
+            right: 2rem;
+            top: 50%;
+            transform: translateY(-50%);
+            white-space: nowrap;
+            background: rgba(0, 0, 0, 0.85);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .nav-dot:hover .nav-dot-label {
+            opacity: 1;
+        }
+
+        @media (max-width: 1024px) {
+            .nav-dots {
+                display: none;
+            }
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            background: var(--sand-100);
+            overflow: hidden;
+        }
+
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="grid" width="50" height="50" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="%23c9b896" opacity="0.15"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+            opacity: 0.3;
+        }
+
+        .hero-content {
+            z-index: 10;
+            text-align: center;
+            padding: 2rem;
+            max-width: 900px;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1.5s ease-out forwards;
+        }
+
+        .hero-credit {
+            margin-top: 3rem;
+            font-size: 0.875rem;
+            opacity: 0;
+            animation: fadeInUp 1.5s ease-out 2.5s forwards;
+        }
+
+        .hero-credit a {
+            color: var(--sand-700);
+            text-decoration: none;
+            border-bottom: 1px solid var(--sand-500);
+            transition: all 0.3s ease;
+        }
+
+        .hero-credit a:hover {
+            color: var(--sand-900);
+            border-bottom-color: var(--sand-700);
+        }
+
+        .hero-credit a:last-child {
+            border-bottom-color: transparent;
+        }
+
+        .hero-credit a:last-child:hover {
+            border-bottom-color: var(--sand-500);
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-subtitle {
+            color: var(--sand-600);
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            font-size: 0.875rem;
+            margin-bottom: 2rem;
+            opacity: 0;
+            animation: fadeInUp 1.5s ease-out 0.5s forwards;
+        }
+
+        .hero-title {
+            font-size: clamp(3rem, 10vw, 7rem);
+            font-weight: 700;
+            margin-bottom: 2rem;
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+            color: var(--sand-900);
+        }
+
+        .hero-divider {
+            width: 100px;
+            height: 1px;
+            background: var(--sand-400);
+            margin: 2rem auto;
+            opacity: 0;
+            animation: fadeInUp 1.5s ease-out 1s forwards;
+        }
+
+        .hero-quote {
+            font-size: clamp(1.125rem, 2vw, 1.5rem);
+            color: var(--sand-700);
+            font-style: italic;
+            max-width: 600px;
+            margin: 0 auto;
+            opacity: 0;
+            animation: fadeInUp 1.5s ease-out 1.2s forwards;
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            opacity: 0;
+            animation: fadeInUp 1.5s ease-out 2s forwards, bounce 2s ease-in-out 3s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(-10px); }
+        }
+
+        .scroll-arrow {
+            width: 24px;
+            height: 24px;
+            border-left: 2px solid var(--sand-500);
+            border-bottom: 2px solid var(--sand-500);
+            transform: rotate(-45deg);
+        }
+
+        /* Section Styles */
+        section {
+            min-height: 100vh;
+            position: relative;
+            padding: 8rem 2rem;
+            transition: background-color 0.8s ease;
+        }
+
+        .section-day {
+            background: linear-gradient(135deg, #faf8f5 0%, #f5f1ea 100%);
+            color: var(--sand-900);
+        }
+
+        .section-day::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: radial-gradient(circle at 25% 25%, rgba(201, 184, 150, 0.05) 1px, transparent 1px),
+                              radial-gradient(circle at 75% 75%, rgba(201, 184, 150, 0.05) 1px, transparent 1px);
+            background-size: 50px 50px;
+            opacity: 0.5;
+            pointer-events: none;
+        }
+
+        .section-twilight {
+            background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+            color: var(--slate-300);
+        }
+
+        .section-twilight::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: radial-gradient(circle at 20% 80%, rgba(245, 158, 11, 0.05) 2px, transparent 2px);
+            background-size: 60px 60px;
+            opacity: 0.3;
+            pointer-events: none;
+        }
+
+        .section-night {
+            background: linear-gradient(135deg, #0f172a 0%, #1a1a2e 100%);
+            color: var(--slate-300);
+            position: relative;
+        }
+
+        /* Starfield effect for night sections */
+        .section-night::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: 
+                radial-gradient(1px 1px at 20% 30%, white, transparent),
+                radial-gradient(1px 1px at 60% 70%, white, transparent),
+                radial-gradient(1px 1px at 50% 50%, white, transparent),
+                radial-gradient(1px 1px at 80% 10%, white, transparent),
+                radial-gradient(1px 1px at 90% 60%, white, transparent),
+                radial-gradient(2px 2px at 33% 40%, white, transparent),
+                radial-gradient(1px 1px at 10% 80%, white, transparent);
+            background-size: 200% 200%;
+            animation: twinkle 8s ease-in-out infinite;
+            opacity: 0.4;
+            pointer-events: none;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.6; }
+        }
+
+        .section-dawn {
+            background: linear-gradient(to bottom, #fff5eb 0%, #ffe4cc 50%, #ffd4a8 100%);
+            color: var(--sand-900);
+        }
+
+        .section-dawn::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at 50% 100%, rgba(245, 158, 11, 0.15) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .section-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 10;
+        }
+
+        .section-number {
+            position: absolute;
+            top: 2rem;
+            right: 2rem;
+            font-size: 6rem;
+            font-weight: 700;
+            opacity: 0.08;
+            line-height: 1;
+            pointer-events: none;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 8rem;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 1s ease-out;
+            position: relative;
+            padding: 3rem 2rem;
+        }
+
+        .section-header::before {
+            content: '◆';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 1.5rem;
+            opacity: 0.2;
+        }
+
+        .section-header.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .section-part {
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+
+        .section-night .section-part,
+        .section-twilight .section-part {
+            color: var(--amber-500);
+        }
+
+        .section-day .section-part,
+        .section-dawn .section-part {
+            color: var(--sand-500);
+        }
+
+        .section-title {
+            font-size: clamp(2.75rem, 6vw, 5rem);
+            font-weight: 600;
+            margin-bottom: 2rem;
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+        }
+
+        .section-divider {
+            width: 80px;
+            height: 2px;
+            margin: 2.5rem auto 0;
+            position: relative;
+        }
+
+        .section-divider::before,
+        .section-divider::after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: currentColor;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .section-divider::before {
+            left: -15px;
+        }
+
+        .section-divider::after {
+            right: -15px;
+        }
+
+        .section-night .section-divider,
+        .section-twilight .section-divider {
+            background: rgba(245, 158, 11, 0.6);
+        }
+
+        .section-day .section-divider,
+        .section-dawn .section-divider {
+            background: var(--sand-400);
+        }
+
+        /* Quote Block */
+        .quote-block {
+            max-width: 900px;
+            margin: 0 auto 8rem;
+            padding: 4rem 3rem;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 1s ease-out;
+            position: relative;
+            border-radius: 8px;
+        }
+
+        /* Make quote blocks stand out as cards */
+        .section-day .quote-block,
+        .section-dawn .quote-block {
+            background: rgba(255, 255, 255, 0.6);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        .section-night .quote-block,
+        .section-twilight .quote-block {
+            background: rgba(255, 255, 255, 0.03);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .quote-block::before,
+        .quote-block::after {
+            content: '"';
+            position: absolute;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 8rem;
+            font-weight: 700;
+            opacity: 0.08;
+            line-height: 1;
+        }
+
+        .quote-block::before {
+            top: 1rem;
+            left: 1rem;
+        }
+
+        .quote-block::after {
+            content: '"';
+            bottom: 1rem;
+            right: 1rem;
+        }
+
+        .quote-block.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .quote-text {
+            font-size: clamp(1.5rem, 3vw, 2.25rem);
+            line-height: 1.5;
+            text-align: center;
+            margin-bottom: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .quote-highlight {
+            font-size: clamp(2rem, 4.5vw, 4rem);
+            font-weight: 600;
+            line-height: 1.2;
+            letter-spacing: -0.02em;
+        }
+
+        .section-night .quote-highlight,
+        .section-twilight .quote-highlight {
+            color: var(--amber-200);
+        }
+
+        .section-day .quote-highlight,
+        .section-dawn .quote-highlight {
+            color: var(--sand-800);
+        }
+
+        .quote-subtext {
+            max-width: 700px;
+            margin: 2.5rem auto 0;
+            font-size: clamp(1.125rem, 2vw, 1.375rem);
+            opacity: 0.85;
+            line-height: 1.8;
+            position: relative;
+            z-index: 1;
+        }
+
+        .quote-subtext p {
+            margin-bottom: 1.5rem;
+        }
+
+        .quote-subtext p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Attribution/footer for each quote */
+        .quote-attribution {
+            text-align: center;
+            margin-top: 2rem;
+            font-size: 0.875rem;
+            opacity: 0.4;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            position: relative;
+            z-index: 1;
+        }
+
+        .quote-attribution::before {
+            content: '';
+            display: block;
+            width: 40px;
+            height: 1px;
+            background: currentColor;
+            margin: 0 auto 1rem;
+        }
+
+        /* Chapter Divider */
+        .chapter-divider {
+            display: flex;
+            justify-content: center;
+            padding: 6rem 0;
+            opacity: 0.3;
+        }
+
+        .chapter-divider-line {
+            width: 1px;
+            height: 6rem;
+        }
+
+        .section-night .chapter-divider-line,
+        .section-twilight .chapter-divider-line {
+            background: var(--slate-700);
+        }
+
+        .section-day .chapter-divider-line,
+        .section-dawn .chapter-divider-line {
+            background: var(--sand-200);
+        }
+
+        /* Footer */
+        footer {
+            padding: 6rem 2rem;
+            text-align: center;
+            background: var(--sand-100);
+            color: var(--sand-600);
+        }
+
+        footer a:hover {
+            color: var(--sand-900);
+            border-bottom-color: var(--sand-700);
+        }
+
+        .social-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--sand-600);
+            text-decoration: none;
+            font-size: 0.875rem;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            transition: all 0.3s ease;
+            border: 1px solid transparent;
+        }
+
+        .social-link:hover {
+            color: var(--sand-900);
+            background: rgba(157, 135, 96, 0.1);
+            border-color: var(--sand-400);
+            transform: translateY(-2px);
+        }
+
+        .social-link svg {
+            transition: transform 0.3s ease;
+        }
+
+        .social-link:hover svg {
+            transform: scale(1.1);
+        }
+
+        .footer-title {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-subtitle {
+            font-style: italic;
+            margin-bottom: 2rem;
+        }
+
+        .footer-credit {
+            font-size: 0.75rem;
+            opacity: 0.5;
+        }
+
+        /* Scroll Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            section {
+                padding: 4rem 1.5rem;
+            }
+
+            .quote-block {
+                padding: 3rem 2rem;
+                margin-bottom: 5rem;
+            }
+
+            .quote-block::before,
+            .quote-block::after {
+                font-size: 5rem;
+            }
+
+            .section-number {
+                font-size: 4rem;
+                top: 1rem;
+                right: 1rem;
+            }
+
+            .section-header {
+                margin-bottom: 5rem;
+                padding: 2rem 1rem;
+            }
+
+            .hero-title {
+                font-size: clamp(2.5rem, 12vw, 5rem);
+            }
+
+            .social-link span {
+                display: none;
+            }
+
+            .social-link {
+                padding: 0.75rem;
+            }
+
+            .hero-credit {
+                font-size: 0.75rem;
+                display: flex;
+                flex-direction: column;
+                gap: 0.5rem;
+                align-items: center;
+            }
+
+            .hero-credit span {
+                display: none;
+            }
+        }
+
+        @media (min-width: 769px) {
+            .quote-block:hover {
+                transform: scale(1.02);
+                transition: transform 0.3s ease;
+            }
+
+            .section-day .quote-block:hover,
+            .section-dawn .quote-block:hover {
+                box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+            }
+
+            .section-night .quote-block:hover,
+            .section-twilight .quote-block:hover {
+                box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+            }
+        }
+
+        /* Print styles for better screenshots */
+        @media print {
+            .progress-bar,
+            .nav-dots,
+            .scroll-indicator {
+                display: none;
+            }
+
+            .quote-block,
+            .section-header {
+                page-break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="progress-bar" id="progressBar"></div>
+
+    <nav class="nav-dots" id="navDots"></nav>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-bg"></div>
+        
+        <!-- Back to Library Button -->
+        <a href="index.html" style="position: absolute; top: 2rem; left: 2rem; z-index: 100; display: inline-flex; align-items: center; gap: 0.5rem; color: var(--sand-700); text-decoration: none; font-size: 0.875rem; padding: 0.75rem 1.25rem; background: rgba(250, 248, 245, 0.9); border-radius: 50px; border: 1px solid var(--sand-400); transition: all 0.3s ease; backdrop-filter: blur(10px);" onmouseover="this.style.background='rgba(250, 248, 245, 1)'; this.style.borderColor='var(--sand-600)'; this.style.transform='translateX(-5px)';" onmouseout="this.style.background='rgba(250, 248, 245, 0.9)'; this.style.borderColor='var(--sand-400)'; this.style.transform='translateX(0)';">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M19 12H5M12 19l-7-7 7-7"/>
+            </svg>
+            <span>Library</span>
+        </a>
+        
+        <div class="hero-content">
+            <p class="hero-subtitle">A Journey to Your Personal Legend</p>
+            <h1 class="hero-title font-display">The Alchemist</h1>
+            <div class="hero-divider"></div>
+            <p class="hero-quote">"To realize one's destiny is a person's only real obligation."</p>
+            <p class="hero-credit">
+                Crafted by <a href="https://thisisalimirza.com" target="_blank" rel="noopener noreferrer">Ali Mirza</a>
+                <span style="margin: 0 0.5rem; opacity: 0.3;">·</span>
+                <a href="https://twitter.com/thisisalimirza" target="_blank" rel="noopener noreferrer" style="color: var(--sand-600); text-decoration: none; border-bottom: 1px solid transparent; transition: all 0.3s ease;">@thisisalimirza</a>
+            </p>
+        </div>
+        <div class="scroll-indicator">
+            <div class="scroll-arrow"></div>
+        </div>
+    </section>
+
+    <!-- Chapter 1: The Dream -->
+    <section id="dreams" class="section-day" data-theme="day">
+        <div class="section-number font-display">1</div>
+        <div class="section-container">
+            <div class="section-header">
+                <div class="section-part"><span class="ornament">✦</span>Part 1<span class="ornament">✦</span></div>
+                <h2 class="section-title font-display">The Dream</h2>
+                <div class="section-divider"></div>
+            </div>
+
+            <div class="quote-block">
+                <div class="quote-text quote-highlight font-display">
+                    It's the possibility of having a dream come true that makes life interesting.
+                </div>
+            </div>
+
+            <div class="quote-block">
+                <div class="quote-text">
+                    Dreams are the language of God.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Chapter 2: Personal Legend -->
+    <section id="personal-legend" class="section-day" data-theme="day">
+        <div class="section-number font-display">2</div>
+        <div class="section-container">
+            <div class="section-header">
+                <div class="section-part"><span class="ornament">✦</span>Part 2<span class="ornament">✦</span></div>
+                <h2 class="section-title font-display">Personal Legend</h2>
+                <div class="section-divider"></div>
+            </div>
+
+            <div class="quote-block">
+                <div class="quote-text">
+                    When someone sees the same people every day, they wind up becoming a part of that person's life. And then they want the person to change.
+                </div>
+                <div class="quote-subtext">
+                    <p>If someone isn't what others want them to be, the others become angry.</p>
+                    <p>Everyone seems to have a clear idea of how other people should lead their lives, but none about his or her own.</p>
+                </div>
+            </div>
+
+            <div class="quote-block">
+                <div class="quote-text quote-highlight font-display">
+                    "What's the world's greatest lie?"
+                </div>
+                <div class="quote-subtext">
+                    <p>It's this: that at a certain point in our lives, we lose control of what's happening to us, and our lives become controlled by fate. That's the world's greatest lie.</p>
+                </div>
+            </div>
+
+            <div class="quote-block">
+                <div class="quote-text">
+                    Everyone, when they are young, knows what their Personal Legend is.
+                </div>
+                <div class="quote-subtext">
+                    <p>At that point in their lives, everything is clear and everything is possible. They are not afraid to dream, and to yearn for everything they would like to see happen to them in their lives.</p>
+                    <p>But, as time passes, a mysterious force begins to convince them that it will be impossible for them to realize their Personal Legend.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Chapter 3: The Crystal Shop -->
+    <section id="crystal-shop" class="section-twilight" data-theme="twilight">
+        <div class="section-number font-display">3</div>
+        <div class="section-container">
+            <div class="section-header">
+                <div class="section-part"><span class="ornament">✦</span>Part 3<span class="ornament">✦</span></div>
+                <h2 class="section-title font-display">The Crystal Shop</h2>
+                <div class="section-divider"></div>
+            </div>
+
+            <div class="quote-block">
+                <div class="quote-text">
+                    "If you start out by promising what you don't even have yet, you'll lose your desire to work toward getting it."
+                </div>
+            </div>
+
+            <div class="quote-block">
+                <div class="quote-text quote-highlight font-display">
+                    Every blessing ignored becomes a curse.
+                </div>
+                <div class="quote-subtext">
+                    <p>I don't want anything else in life. But you are forcing me to look at wealth and at horizons I have never known. Now that I have seen them, and now that I see how immense my possibilities are, I'm going to feel worse than I did before you arrived. Because I know the things I should be able to accomplish, and I don't want to do so.</p>
+                </div>
+            </div>
+
+            <div class="quote-block">
+                <div class="quote-text">
+                    "I'm afraid that if my dream is realized, I'll have no reason to go on living."
+                </div>
+                <div class="quote-subtext">
+                    <p>I'm already used to the way things are... I don't want to change anything, because I don't know how to deal with change.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Chapter 4: The Language Without Words -->
+    <section id="journey-begins" class="section-dawn" data-theme="dawn">
+        <div class="section-number font-display">4</div>
+        <div class="section-container">
+            <div class="section-header">
+                <div class="section-part"><span class="ornament">✦</span>Part 4<span class="ornament">✦</span></div>
+                <h2 class="section-title font-display">The Language Without Words</h2>
+                <div class="section-divider"></div>
+            </div>
+
+            <div class="quote-block">
+                <div class="quote-text">
+                    "You must always know what it is that you want," the old king had said. The boy knew, and was now working toward it.
+                </div>
+            </div>
+
+            <div class="quote-block">
+                <div class="quote-text">
+                    The hills of Andalusia were only two hours away, but there was an entire desert between him and the Pyramids.
+                </div>
+                <div class="quote-subtext">
+                    <p>Yet the boy felt that there was another way to regard his situation: he was actually two hours closer to his treasure.</p>
+                </div>
+            </div>
+
+            <div class="quote-block">
+                <div class="quote-text">
+                    He was learning a lot of new things. Some of them were things that he had already experienced, and weren't really new, but that he had never perceived before. And he hadn't perceived them because he had become accustomed to them.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Chapter 5: The Desert -->
+    <section id="desert" class="section-day" data-theme="day">
+        <div class="section-number font-display">5</div>
+        <div class="section-container">
+            <div class="section-header">
+                <div class="section-part"><span class="ornament">✦</span>Part 5<span class="ornament">✦</span></div>
+                <h2 class="section-title font-display">The Desert</h2>
+                <div class="section-divider"></div>
+            </div>
+
+            <div class="quote-block">
+                <div class="quote-text quote-highlight font-display">
+                    "I'm interested only in the present. If you can concentrate always on the present, you'll be a happy man."
+                </div>
+                <div class="quote-subtext">
+                    <p>You'll see that there is life in the desert, that there are stars in the heavens, and that tribesmen fight because they are part of the human race. Life will be a party for you, a grand festival, because life is the moment we're living right now.</p>
+                </div>
+            </div>
+
+            <div class="quote-block">
+                <div class="quote-text">
+                    The Soul of the World is nourished by people's happiness. And also by unhappiness, envy, and jealousy.
+                </div>
+            </div>
+
+            <div class="quote-block">
+                <div class="quote-text">
+                    The boy was beginning to understand that intuition is really a sudden immersion of the soul into the universal current of life.
+                </div>
+                <div class="quote-subtext">
+                    <p>Maktub.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Chapter 6: Love in the Oasis -->
+    <section id="love" class="section-night" data-theme="night">
+        <div class="section-number font-display">6</div>
+        <div class="section-container">
+            <div class="section-header">
+                <div class="section-part"><span class="ornament">✦</span>Part 6<span class="ornament">✦</span></div>
+                <h2 class="section-title font-display">Love in the Oasis</h2>
+                <div class="section-divider"></div>
+            </div>
+
+            <div class="quote-block">
+                <div class="quote-text quote-highlight font-display">
+                    When he looked into her dark eyes... he learned the most important part of the language that all the world spoke.
+                </div>
+                <div class="quote-subtext">
+                    <p>It was love.</p>
+                    <p>It is the language that everyone on earth was capable of understanding in their heart.</p>
+                </div>
+            </div>
+
+            <div class="quote-block">
+                <div class="quote-text">
+                    "You must understand that love never keeps a man from pursuing his Personal Legend."
+                </div>
+                <div class="quote-subtext">
+                    <p>If he abandons that pursuit, it's because it wasn't true love... the love that speaks the Language of the World.</p>
+                </div>
+            </div>
+
+            <div class="quote-block">
+                <div class="quote-text">
+                    "If what one finds is made of pure matter, it will never spoil. And one can always come back."
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Chapter 7: The Alchemist -->
+    <section id="alchemist" class="section-night" data-theme="night">
+        <div class="section-number font-display">7</div>
+        <div class="section-container">
+            <div class="section-header">
+                <div class="section-part"><span class="ornament">✦</span>Part 7<span class="ornament">✦</span></div>
+                <h2 class="section-title font-display">The Alchemist</h2>
+                <div class="section-divider"></div>
+            </div>
+
+            <div class="quote-block">
+                <div class="quote-text">
+                    "Why don't people's hearts tell them to continue to follow their dreams?"
+                </div>
+                <div class="quote-subtext">
+                    <p>"Because that's what makes a heart suffer most, and hearts don't like to suffer."</p>
+                </div>
+            </div>
+
+            <div class="quote-block">
+                <div class="quote-text quote-highlight font-display">
+                    "You will never be able to escape from your heart. So it's better to listen to what it has to say."
+                </div>
+            </div>
+
+            <div class="quote-block">
+                <div class="quote-text">
+                    "Before a dream is realized, the Soul of the World tests everything that was learned along the way."
+                </div>
+                <div class="quote-subtext">
+                    <p>It does this not because it is evil, but so that we can, in addition to realizing our dreams, master the lessons we've learned as we've moved toward that dream.</p>
+                </div>
+            </div>
+
+            <div class="quote-block">
+                <div class="quote-text">
+                    "Every search begins with beginner's luck. And every search ends with the victor's being severely tested."
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Chapter 8: The Treasure -->
+    <section id="treasure" class="section-dawn" data-theme="dawn">
+        <div class="section-number font-display">8</div>
+        <div class="section-container">
+            <div class="section-header">
+                <div class="section-part"><span class="ornament">✦</span>Part 8<span class="ornament">✦</span></div>
+                <h2 class="section-title font-display">The Treasure</h2>
+                <div class="section-divider"></div>
+            </div>
+
+            <div class="quote-block">
+                <div class="quote-text">
+                    "If you pay attention to the present, you can improve upon it. And, if you improve on the present, what comes later will also be better."
+                </div>
+            </div>
+
+            <div class="quote-block">
+                <div class="quote-text">
+                    "There is only one way to learn. It's through action."
+                </div>
+            </div>
+
+            <div class="quote-block">
+                <div class="quote-text quote-highlight font-display">
+                    "When you possess great treasures within you, and try to tell others of them, seldom are you believed."
+                </div>
+            </div>
+
+            <div class="quote-block">
+                <div class="quote-text">
+                    It's true; life really is generous to those who pursue their Personal Legend.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p class="footer-title font-display">Maktub</p>
+        <p class="footer-subtitle">"It is written"</p>
+        <div style="margin: 3rem 0 1rem;">
+            <div style="width: 60px; height: 1px; background: var(--sand-400); margin: 0 auto;"></div>
+        </div>
+        
+        <!-- Back to Library Button -->
+        <div style="margin-bottom: 3rem;">
+            <a href="index.html" style="display: inline-flex; align-items: center; gap: 0.5rem; color: var(--sand-700); text-decoration: none; font-size: 0.875rem; padding: 0.75rem 1.5rem; background: rgba(255, 255, 255, 0.5); border-radius: 50px; border: 1px solid var(--sand-400); transition: all 0.3s ease;" onmouseover="this.style.background='rgba(255, 255, 255, 0.8)'; this.style.borderColor='var(--sand-600)'; this.style.transform='translateY(-2px)';" onmouseout="this.style.background='rgba(255, 255, 255, 0.5)'; this.style.borderColor='var(--sand-400)'; this.style.transform='translateY(0)';">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M19 12H5M12 19l-7-7 7-7"/>
+                </svg>
+                <span>Back to Library</span>
+            </a>
+        </div>
+        
+        <p style="font-size: 0.875rem; margin-bottom: 0.5rem;">Inspired by Paulo Coelho's "The Alchemist"</p>
+        <p style="font-size: 0.875rem; margin-bottom: 2rem; opacity: 0.7;">Designed & crafted by <a href="https://thisisalimirza.com" target="_blank" rel="noopener noreferrer" style="color: var(--sand-700); text-decoration: none; border-bottom: 1px solid var(--sand-400); transition: all 0.3s ease;">Ali Mirza</a></p>
+        
+        <!-- Social Links -->
+        <div style="margin: 2rem 0;">
+            <div style="display: flex; justify-content: center; align-items: center; gap: 1.5rem; flex-wrap: wrap;">
+                <a href="https://twitter.com/thisisalimirza" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Twitter">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                    </svg>
+                    <span>@thisisalimirza</span>
+                </a>
+                <a href="https://linkedin.com/in/thisisalimirza" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="LinkedIn">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M20.5 2h-17A1.5 1.5 0 002 3.5v17A1.5 1.5 0 003.5 22h17a1.5 1.5 0 001.5-1.5v-17A1.5 1.5 0 0020.5 2zM8 19H5v-9h3zM6.5 8.25A1.75 1.75 0 118.3 6.5a1.78 1.78 0 01-1.8 1.75zM19 19h-3v-4.74c0-1.42-.6-1.93-1.38-1.93A1.74 1.74 0 0013 14.19a.66.66 0 000 .14V19h-3v-9h2.9v1.3a3.11 3.11 0 012.7-1.4c1.55 0 3.36.86 3.36 3.66z"/>
+                    </svg>
+                    <span>@thisisalimirza</span>
+                </a>
+                <a href="https://instagram.com/thisisalimirza" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Instagram">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                    </svg>
+                    <span>@thisisalimirza</span>
+                </a>
+                <a href="https://github.com/thisisalimirza" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="GitHub">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                    </svg>
+                    <span>@thisisalimirza</span>
+                </a>
+            </div>
+        </div>
+        
+        <p class="footer-credit" style="font-size: 0.75rem; opacity: 0.5; line-height: 1.6; max-width: 600px; margin: 2rem auto 0;">
+            Medical student, entrepreneur, and builder pursuing his Personal Legend through healthcare innovation, investment, and empowering human potential.
+        </p>
+    </footer>
+
+    <script>
+        // Add attributions to all quote blocks
+        document.addEventListener('DOMContentLoaded', () => {
+            const quoteBlocks = document.querySelectorAll('.quote-block');
+            quoteBlocks.forEach(block => {
+                if (!block.querySelector('.quote-attribution')) {
+                    const attribution = document.createElement('div');
+                    attribution.className = 'quote-attribution';
+                    attribution.textContent = 'The Alchemist';
+                    block.appendChild(attribution);
+                }
+            });
+        });
+
+        // Progress Bar
+        function updateProgressBar() {
+            const windowHeight = window.innerHeight;
+            const documentHeight = document.documentElement.scrollHeight - windowHeight;
+            const scrolled = window.scrollY;
+            const progress = (scrolled / documentHeight) * 100;
+            document.getElementById('progressBar').style.width = progress + '%';
+        }
+
+        // Navigation Dots
+        const sections = document.querySelectorAll('section[id]');
+        const navDotsContainer = document.getElementById('navDots');
+        
+        sections.forEach((section, index) => {
+            if (section.id !== 'hero' && section.hasAttribute('id')) {
+                const dot = document.createElement('div');
+                dot.className = 'nav-dot';
+                dot.setAttribute('data-section', section.id);
+                
+                const label = document.createElement('span');
+                label.className = 'nav-dot-label';
+                label.textContent = section.querySelector('.section-title').textContent;
+                
+                dot.appendChild(label);
+                dot.addEventListener('click', () => {
+                    section.scrollIntoView({ behavior: 'smooth' });
+                });
+                
+                navDotsContainer.appendChild(dot);
+            }
+        });
+
+        // Update Active Dot
+        function updateActiveNav() {
+            const dots = document.querySelectorAll('.nav-dot');
+            const scrollPos = window.scrollY + window.innerHeight / 2;
+            
+            sections.forEach((section, index) => {
+                if (section.id) {
+                    const sectionTop = section.offsetTop;
+                    const sectionBottom = sectionTop + section.offsetHeight;
+                    
+                    if (scrollPos >= sectionTop && scrollPos < sectionBottom) {
+                        dots.forEach(dot => dot.classList.remove('active'));
+                        const activeDot = document.querySelector(`[data-section="${section.id}"]`);
+                        if (activeDot) {
+                            activeDot.classList.add('active');
+                        }
+                    }
+                }
+            });
+        }
+
+        // Intersection Observer for Fade-in Effects
+        const observerOptions = {
+            threshold: 0.15,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Observe section headers and quote blocks
+        document.querySelectorAll('.section-header, .quote-block').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Scroll Event Listeners
+        let ticking = false;
+        window.addEventListener('scroll', () => {
+            if (!ticking) {
+                window.requestAnimationFrame(() => {
+                    updateProgressBar();
+                    updateActiveNav();
+                    ticking = false;
+                });
+                ticking = true;
+            }
+        });
+
+        // Initial calls
+        updateProgressBar();
+        updateActiveNav();
+
+        // Hide scroll indicator after scrolling
+        let hasScrolled = false;
+        window.addEventListener('scroll', () => {
+            if (!hasScrolled && window.scrollY > 100) {
+                const scrollIndicator = document.querySelector('.scroll-indicator');
+                if (scrollIndicator) {
+                    scrollIndicator.style.opacity = '0';
+                }
+                hasScrolled = true;
+            }
+        });
+    </script>
+</body>
+</html>
